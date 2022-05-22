@@ -11,7 +11,7 @@ ssh-agent
 ```
 
 ```
-ssh-keygen -t ed25519 -C "<your_email_1>"
+ssh-keygen -t ed25519 -C "<your_email>"
 ```
 
 To change the location pass the full path:
@@ -22,7 +22,7 @@ To change the location pass the full path:
 
 - Create a new SSH key pair. You can give it a passphrase. If so, remember it.
 In your home directory inside the folder .ssh you will have the new id_rsa and id_rsa.pub files.
-You can rename them to id_rsa_work and id_rsa_work.pub.
+You can rename them to id_rsa_work and id_rsa_work.pub manually too.
 
 - Copy the content of id_rsa_work.pub. Go to your git account in the cloud, and under the settings, SSH Keys, add the new key. You can give it a name as identifier.
 For example: 'Work_pc_ubuntu'
@@ -115,6 +115,8 @@ cd ..
     setpersonalmail = "config user.email 'personal@email.com'"
 	  setworkmail = "config user.email 'work@email.tech'"
 ```
+Not for Mac:
+- The includeIf probably would look like something like this: `includeIf "gitdir:/Users/<my_mac_user>/<my_folders>/`
 
 - Create in the same folder a file .gitconfig-personal. It should have the same configuration, except for the email and the includeIf:
 ```
@@ -132,13 +134,18 @@ cd ..
 
 [alias]
     setpersonalmail = "config user.email 'personal@email.com'"
-	  setworkmail = "config user.email 'work@email.tech'"
+    setworkmail = "config user.email 'work@email.tech'"
 ```
 
-That is it. Now to clone something from work:
-git@github.com:workrepo
-to clone something personal:
-git@github.com-personal:personalrepo
 
+
+That is it. Now to clone something from work:
+
+```git@github.com:workrepo```
+
+to clone something personal:
+```
+git@github.com-personal:personalrepo
+```
 Make sure that all the personal repos goes to the personal folder.
 
